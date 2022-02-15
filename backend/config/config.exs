@@ -15,7 +15,7 @@ config :backend, BackendWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: BackendWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Backend.PubSub,
-  live_view: [signing_salt: "PuCTZ0aD"]
+  live_view: [signing_salt: "eiSHRZY0"]
 
 # Configures the mailer
 #
@@ -50,3 +50,7 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+config :backend, BackendWeb.Auth.Guardian,
+  issuer: "backend",
+  secret_key: "XZ7cmKt8eIKg2GYEitABkrVDDO83fVWYyRAJiJOKbOt/Z/TGzNmKgqeNxW+gxy9c"

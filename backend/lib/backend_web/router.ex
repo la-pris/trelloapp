@@ -5,8 +5,20 @@ defmodule BackendWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug BackendWeb.Auth.Pipeline
+  end
+
   scope "/api", BackendWeb do
     pipe_through :api
+
+    post "/users/signup", UserController, :create
+    post "/users/signin", UserController, :signin
+  end
+
+  scope "/api", BackendWeb do
+    pipe_through [:api, :auth]
+    resources "/lists", ListController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

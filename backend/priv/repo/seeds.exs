@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Backend.Repo
+alias Backend.Lists.List
+
+Repo.insert! %List{title: "Company 1", position: 1}
+Repo.insert! %List{title: "Company 2", position: 2}
+Repo.insert! %List{title: "Company 3", position: 3}
