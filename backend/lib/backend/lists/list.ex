@@ -5,6 +5,7 @@ defmodule Backend.Lists.List do
   schema "lists" do
     field :position, :integer
     field :title, :string
+    has_many :tasks, Backend.Lists.Task
 
     timestamps()
   end

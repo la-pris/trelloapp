@@ -18,4 +18,19 @@ defmodule Backend.ListsFixtures do
 
     list
   end
+
+  @doc """
+  Generate a task.
+  """
+  def task_fixture(attrs \\ %{}) do
+    {:ok, task} =
+      attrs
+      |> Enum.into(%{
+        description: "some description",
+        title: "some title"
+      })
+      |> Backend.Lists.create_task()
+
+    task
+  end
 end
