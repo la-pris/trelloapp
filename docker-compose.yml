@@ -20,7 +20,7 @@ services:
       MIX_ENV: dev
       PGUSER: postgres
       PGPASSWORD: postgres
-      PGDATABASE: myapp_dev
+      PGDATABASE: trelloapp_dev
       PGPORT: 5432
       PGHOST: postgres
     env_file:

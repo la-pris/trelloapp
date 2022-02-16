@@ -21,7 +21,7 @@ defmodule BackendWeb.UserController do
       # |> render("show.json", user: user)
       |> render("user.json", %{user: user, token: token})
     end
-
+  end
     def signin(conn, %{"email" => email, "password" => password}) do
       with {:ok, user, token} <- Guardian.authenticate(email, password) do
         conn
@@ -51,4 +51,3 @@ defmodule BackendWeb.UserController do
   #     send_resp(conn, :no_content, "")
   #   end
   # end
-end
