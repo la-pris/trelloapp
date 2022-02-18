@@ -7,6 +7,10 @@ defmodule FrontendWeb.BoardLive do
     {:ok, assign(socket, :lists, Tesla.get("/api/lists") )}
   end
 
+  def render(assigns) do
+    FrontendWeb.BoardView.render("board.html", assigns)
+  end
+
   def all_lists(params) do
     url = "/api/lists"
     # {access_token, params} = Map.pop(params, "access_token")
