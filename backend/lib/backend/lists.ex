@@ -15,8 +15,13 @@ defmodule Backend.Lists do
   def get_list!(id), do: Repo.get!(List, id)
 
   def create_list(attrs \\ %{}) do
+    with_position =
+      case attrs do
+        %{position: _} -> attrs
+          _ -> Map.put(attrs, "position", next_list_position())
+      end
     %List{}
-    |> List.changeset(attrs)
+    |> List.changeset(with_position)
     |> Repo.insert()
   end
 
@@ -32,6 +37,16 @@ defmodule Backend.Lists do
 
   def change_list(%List{} = list, attrs \\ %{}) do
     List.changeset(list, attrs)
+  end
+
+  def next_list_position do
+    result = from(list in List, select: max(list.position))
+    |> Repo.one()
+
+    case result do
+      nil -> 0
+      int -> int + 1
+    end
   end
 
   alias Backend.Lists.Task

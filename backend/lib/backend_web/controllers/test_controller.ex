@@ -4,7 +4,7 @@ defmodule BackendWeb.TestController do
   action_fallback BackendWeb.FallbackController
 
   def test(conn, _params) do
-    text(conn, "Service is running")
+    text(conn, "Badtrip fdasfdsafsadh")
   end
 
 end
